@@ -1,0 +1,23 @@
+<%- include('./partials/header') %> 
+
+<main class="container">
+    <!-- Flash alert partial -->
+    <%- include("./partials/flash") %>
+
+    <div class="jumbotron text-center mt-5 bg-light p-5 rounded shadow">
+        <h1 class="display-4">Welcome to <span class="text-primary">RevPay</span></h1>
+        <p class="lead">Payment Gateway for Businesses</p>
+        <hr class="my-4">
+        <p class="mb-4">Unlock the Power of Secure Transactions!</p>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <a class="btn btn-primary btn-lg btn-block" href="/signup" role="button">Get Started - Register Now</a>
+            </div>
+            <div class="col-md-6 mb-4">
+                <a class="btn btn-secondary btn-lg btn-block" href="/login" role="button">Already a Member? Log In</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<%- include('./partials/footer') %>

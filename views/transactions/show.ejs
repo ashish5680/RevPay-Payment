@@ -1,0 +1,30 @@
+<%- include("../partials/header") %>
+
+<main class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <!-- Flash alert partial -->
+      <%- include('../partials/flash.ejs'); %>
+      
+      <h1 class="mb-4">Your Transactions</h1>
+      <% if (transactions && transactions.length > 0) { %>
+        <% for (var index = 0; index < transactions.length; index++) { %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Transaction ID: <%= transactions[index]._id %></h5>
+              <p class="card-text">Amount: <%= transactions[index].amount %> Rs.</p>
+              <p class="card-text">Type: <%= transactions[index].transactionType %></p>
+              <p class="card-text">Beneficiary Account: <%= transactions[index].beneficiaryAccountNumber %></p>
+              <p class="card-text">Sort Code: <%= transactions[index].beneficiarySortCode %></p>
+              <p class="card-text">Timestamp: <%= transactions[index].timestamp.toDateString() %></p>
+            </div>
+          </div>
+        <% } %>
+      <% } else { %>
+        <p>No transactions found.</p>
+      <% } %>
+    </div>
+  </div>
+</main>
+
+<%- include("../partials/footer") %>

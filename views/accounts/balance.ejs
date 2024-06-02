@@ -1,0 +1,25 @@
+<%- include("../partials/header") %> 
+
+<main class="container">
+  <!-- Flash alert partial -->
+  <%- include('../partials/flash.ejs'); %>
+
+  <div class="container mt-5">
+    <div class="card shadow-lg">
+      <div class="card-header bg-success text-white">
+        <h3 class="mb-0">Your Account Balance</h3>
+      </div>
+      <div class="card-body">
+        <ul class="list-group">
+          <li class="list-group-item border-0"><strong>Account Number:</strong> <%= account.accountNumber %></li>
+          <li class="list-group-item border-0"><strong>IFSC Code/Sort Code:</strong> <%= account.sortCode %></li>
+          <li class="list-group-item border-0">
+            <h2 class="text-success font-weight-bold mb-0">Balance: <%= account.balance %> Rs./-</h2>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include("../partials/footer") %>

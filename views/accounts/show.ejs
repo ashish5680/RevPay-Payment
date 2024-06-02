@@ -1,0 +1,28 @@
+<%- include("../partials/header") %> 
+
+<main class="container">
+  <!-- Flash alert partial -->
+  <%- include('../partials/flash.ejs'); %>
+
+  <div class="container">
+    <h1>Account Details</h1>
+    <% if (account) { %> 
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Account Details:</h3>
+          <p class="card-text">Account Number: <%= account.accountNumber %></p>
+          <p class="card-text">Sort Code: <%= account.sortCode %></p>
+          <a href="/account/<%= account._id %>/transactions" class="btn btn-primary">Transactions</a>
+          <a href="/account/<%= account._id %>/edit" class="btn btn-primary">Change Account Settings</a>
+          <a href="/account/<%= account._id %>/deposit" class="btn btn-success">Deposit Money</a>
+          <a href="/account/<%= account._id %>/withdrawal" class="btn btn-warning">Withdraw Money</a>
+          <a href="/account/<%= account._id %>/balance" class="btn btn-info">Get Balance</a>
+        </div>
+      </div>
+    <% } else { %>
+      <p>No account found.</p>
+    <% } %>
+  </div>
+</main>
+
+<%- include("../partials/footer") %>

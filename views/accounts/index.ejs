@@ -1,0 +1,35 @@
+<%- include("../partials/header") %> 
+
+<main class="container">
+  <!-- Flash alert partial -->
+  <%- include('../partials/flash.ejs'); %>
+
+  <div class="container">
+    <h1>Create New Account</h1>
+    <form action="/newAccount" method="GET">
+      <button type="submit" class="btn btn-primary">Create New Account</button>
+    </form>
+
+    <br><br><br>
+
+    <h2>My Accounts:</h2>
+    <br>
+    <% if (accounts && accounts.length > 0) { %> 
+      <% for (var index = 0; index < accounts.length; index++) { %>
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Account <%= index + 1 %>:</h3>
+            <p class="card-text">Account Number: <%= accounts[index].accountNumber %></p>
+            <p class="card-text">IFSC/Sort Code: <%= accounts[index].sortCode %></p>
+            <a href="/account/<%= accounts[index]._id %>" class="btn btn-primary">Show</a>
+          </div>
+        </div>
+        <br>
+      <% } %> 
+    <% } else { %>
+      <p>No accounts found.</p>
+    <% } %>
+  </div>
+</main>
+
+<%- include("../partials/footer") %>
