@@ -65,7 +65,7 @@ app.use(accountRouter);
 app.use(transactionRouter);
 
 
-mongoose.connect('mongodb://localhost:27017/paymentApp-V1')
+mongoose.connect(process.env.MONGO_URL)
     .then(() => {
         console.log('Connected to database shopApp-db');
     })
@@ -94,5 +94,5 @@ app.get('*', (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log('Server Connected at port 3000');
+    console.log('Server Connected PORT');
 });
