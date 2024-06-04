@@ -12,8 +12,6 @@ router.get("/signup", (req, res) => {
 });
 
 
-
-
 // Register the new user to the database
 router.post("/register", async (req, res) => {
   
@@ -56,8 +54,6 @@ router.post("/register", async (req, res) => {
 router.get("/login", (req, res) => {
   res.render("auth/login");
 });
-
-
 
 
 // Login the user

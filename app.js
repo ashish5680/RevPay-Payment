@@ -79,17 +79,16 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 
-
 // Error Page
 app.get('/error', (req, res) => {
     res.render('error');
 });
 
-
 // Error Page for any other URL which doesn't exist
 app.get('*', (req, res) => {
     res.redirect('/error');
 });
+
 
 const PORT = process.env.PORT || 3000;
 
