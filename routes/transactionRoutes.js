@@ -61,16 +61,16 @@ router.get("/account/:id/transactions", isLoggedIn, verifyAccountOwnership, asyn
 
     if (!transactions || transactions.length === 0) {
       req.flash("error", "No transactions found for this account");
-      return res.redirect(`/account/${account._id}`); // Redirect to a page indicating no transactions found
+      return res.redirect(`/account/${account._id}`); 
     }
 
-    res.render("transactions/show", { transactions }); // Render the EJS template with transactions data
+    res.render("transactions/show", { transactions }); 
   } 
   
   catch (error) {
     console.error(error.message);
     req.flash("error", error.message);
-    res.redirect("/error"); // Redirect to the error page
+    res.redirect("/error"); 
   }
 
 });
@@ -84,8 +84,10 @@ router.get("/account/:id/transactions", isLoggedIn, verifyAccountOwnership, asyn
 
 // Deposit the Money To Bank Account
 router.post("/account/:id/deposit", isLoggedIn, verifyAccountOwnership, async (req, res) => {
+
+  const accountId = req.params.id;
   try {
-    const accountId = req.params.id;
+    
     const { amount, beneficiaryAccountNumber, beneficiarySortCode } = req.body;
 
     const depositAmount = Number(amount);
@@ -106,7 +108,7 @@ router.post("/account/:id/deposit", isLoggedIn, verifyAccountOwnership, async (r
     }
 
     if (accountDetails.accountNumber !== Number(beneficiaryAccountNumber) || accountDetails.sortCode !== Number(beneficiarySortCode)) {
-      req.flash('error', 'Beneficiary account details do not match the logged-in user\'s account');
+      req.flash('error', 'Beneficiary account details does not match the logged-in user\'s account');
       return res.redirect(`/account/${accountId}/deposit`);
     }
 
@@ -148,8 +150,11 @@ router.post("/account/:id/deposit", isLoggedIn, verifyAccountOwnership, async (r
 
 // Withdraw the Money From the Bank Account
 router.post("/account/:id/withdrawal", isLoggedIn, verifyAccountOwnership, async (req, res) => {
+
+  const accountId = req.params.id;
+
   try {
-    const accountId = req.params.id;
+    
     const { amount, beneficiaryAccountNumber, beneficiarySortCode } = req.body;
 
     const withdrawalAmount = Number(amount);
