@@ -21,7 +21,7 @@ router.get("/account", isLoggedIn, async (req, res) => {
       req.flash("error", "No Accounts Found");
       return res.render("accounts/index", { accounts: [] });
     }
-;
+
     res.render("accounts/index", { accounts: user.accounts });
 
   } 
